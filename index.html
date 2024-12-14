@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dancing Robot</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #d2dedff3;
+        }
+        img {
+            width: 200px; /* Größe des Roboters anpassen */
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <img id="robot" src="https://blob.sololearn.com/courses/robot-c.jpg" alt="Dancing Robot"><br>
+
+    <button onclick="moveLeft()">Left</button>
+    <button onclick="moveRight()">Right</button>
+
+    <script>
+        const robot = document.getElementById('robot');
+
+        function moveLeft() {
+            robot.src = 'https://blob.sololearn.com/courses/robot-l.jpg';
+        }
+
+        function moveRight() {
+            robot.src = 'https://blob.sololearn.com/courses/robot-r.jpg';
+        }
+
+        // Touch Events
+        document.addEventListener('touchstart', handleTouch);
+
+        function handleTouch(event) {
+            const touchX = event.touches[0].clientX; // X-Koordinate des Berührens
+            const screenWidth = window.innerWidth; // Breite des Bildschirms
+
+            if (touchX < screenWidth / 2) { // Linke Bildschirmhälfte
+                moveLeft();
+            } else { // Rechte Bildschirmhälfte
+                moveRight();
+            }
+        }
+    </script>
+</body>
+</html>
